@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Login page</title>
+   <link rel="stylesheet" href="style.css">
+</head>
+<body>
+   <div class="login-container">
+      <form id="form-login">
+         <h1>LOGIN</h1>
+         <div class="inputs">
+            <input type="email" id="user_email" placeholder="Email" autofocus autocomplete="off">
+         </div>
+         <div class="inputs">
+            <input type="password" id="user_password" placeholder="Password" autocomplete="off">
+         </div>
+         <div class="go-to-sign-up">
+            <p>Don't have an account? <a href="index.html">Sign up</a></p>
+         </div>
+         <div class="inputs">
+            <button type="submit" id="login-btn" onclick="checkUser()">Login</button>
+         </div>
+      </form>
+   </div>
+   <script>
+      let user_email = document.getElementById('user_email');
+      let user_password = document.getElementById('user_password');
+
+      let form  = document.getElementById('form-login');
+
+      form.addEventListener('submit',(e) => {
+         e.preventDefault()
+      })
+
+      function checkUser(){
+      let user_email_value = user_email.value;
+      let user_password_value = user_password.value;
+
+      console.log(user_password_value);
+
+      let userEmaildata = localStorage.getItem('email');
+      let userPassworddata = localStorage.getItem('password');
+         
+      if(user_email_value == ''){
+         alert('please enter email')
+      }
+      else if(user_password_value == ''){
+         alert('please enter password')
+      }
+      // else if(user_email_value != userEmaildata || user_password_value != userPassworddata){
+      //    alert('user not found')
+      // }
+      else if(user_email_value != userEmaildata){
+         alert('email is invalid')
+      }
+      else if(user_password_value != userPassworddata){
+         alert('password is incorrect')
+      }
+      else{
+         window.location.href = 'https://www.google.com'
+      }
+    
+   }
+   </script>
+</body>
+</html>
